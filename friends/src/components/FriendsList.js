@@ -7,6 +7,7 @@ console.log(egg);
 
 const FriendsList = () => {
     const [friends, setFriends] = useState([]);
+    const [pending, setPending] = useState(true);
     const [newFriend, setNewFriend] = useState({
         age: '',
         email: '',
@@ -20,6 +21,7 @@ const FriendsList = () => {
         .then(res => {
             console.log('Friend List results: ', res);
             setFriends(res.data);
+            setPending(false);
         })
         .catch(err => {
             console.log("Error! ", err)
@@ -49,7 +51,8 @@ const FriendsList = () => {
 
     return (
     <div>
-        <h1>Welcome back, user!</h1>
+        <h1>Welcome back!</h1>
+
         <h3>Do you want to make new friends?</h3>
 
         <form className="friendslist-form" onSubmit={submitHandler}>
@@ -64,6 +67,9 @@ const FriendsList = () => {
             <button type="submit">Add Friend</button>
         </form>
 
+        {/* LOADING SPINNER */}
+        { (pending) ?  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : null }
+
         {friends.map(item => {
             return (
                 <div className="one-friend" key={item.id}>
@@ -77,7 +83,7 @@ const FriendsList = () => {
                         </div>
                 </div>
             )
-        })}
+        })} 
     </div>
     )
 }
