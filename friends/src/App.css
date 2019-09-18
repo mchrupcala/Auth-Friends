@@ -32,6 +32,38 @@
   }
 }
 
+html, body, #root, .app, #app>div {
+  height: 100%;
+  width: 100%;
+}
+
+/* LANDING PAGE  */
+
+.navbar {
+  border-bottom: 1px solid black;
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* position: fixed; */
+}
+
+.navbar a {
+  text-decoration: none;
+  padding: 5px 5px;
+}
+
+.searchbar {
+  height: 70%;
+  margin-right: 10px;
+  padding-top: 0px;
+  margin-top: 1px;
+}
+
+.app {
+  background-image: url('./images/duy-pham-Cecb0_8Hx-o-unsplash.jpg')
+}
+
 .login-form {
   width: 50%;
   margin: 0 auto;
@@ -86,6 +118,8 @@ button {
 
 .friend-card {
 }
+
+
 
 
 /* SPINNER */

@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import egg from '../egg.png';
+import egg from '../images/egg.png';
 // import axios from 'axios';
-
-console.log(egg);
 
 const FriendsList = () => {
     const [friends, setFriends] = useState([]);
@@ -30,17 +28,18 @@ const FriendsList = () => {
 
 
     const handleChange = event => {
-        event.preventDefault();
+        // event.preventDefault();
         setNewFriend({
             ...newFriend,
             [event.target.name]: event.target.value});
     }
 
     const submitHandler = event => {
-        // event.preventDefault();
+        event.preventDefault();
         axiosWithAuth().post('http://localhost:5000/api/friends', newFriend)
         .then(res => {
             console.log('Results from POST request: ', res);
+            setFriends(res.data)
         })
         .catch(err => {
             console.log("Error! ", err)
