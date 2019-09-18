@@ -5,7 +5,8 @@ import PrivateRoute from './components/PrivateRoute';
 import FriendsList from './components/FriendsList';
 import background from './images/duy-pham-Cecb0_8Hx-o-unsplash.jpg'
 import {BrowserRouter as Router, Redirect, Route, Link} from 'react-router-dom';
-import { Z_FIXED } from 'zlib';
+import {ParallaxProvider} from 'react-scroll-parallax';
+
 
 // console.image(background);
 
@@ -26,24 +27,26 @@ let styles = {
 
 function App() {
   return (
+    <ParallaxProvider>
     <Router>
     <div className="App" style={styles} >
       <div className="navbar">
           <ul>
             <Link to="/login">LogIn</Link>
-            <Link to='/friendslist'>Friends List</Link>
+            <Link to='/friendslist' className="friendslist">Friends List</Link>
           </ul>
           <form>
             <input className="searchbar" type="text" placeholder="Search..." />
           </form>
       </div>
       
-      <h1>Friendos</h1>
+      <h1 className="site-header">Friendos</h1>
 
       <Route path="/login" component={Login} />
       <PrivateRoute path="/friendslist" component={FriendsList} />
     </div>
     </Router>
+    </ParallaxProvider>
   );
 }
 

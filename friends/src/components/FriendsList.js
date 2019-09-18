@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import egg from '../images/egg.png';
+import {Parallax} from 'react-scroll-parallax';
 // import axios from 'axios';
 
 const FriendsList = () => {
@@ -54,6 +55,14 @@ const FriendsList = () => {
 
         <h3>Do you want to make new friends?</h3>
 
+    {/* {const ParallaxImage = () => ( */}
+        <Parallax className="form-parallax" y={[200, -200]
+        //if second value is negative, item will scroll upward. Switch those, item will scroll downward.
+        //Gap between value one and two impacts the item's original position. If wide gap, item's offset in a big way. If those values are the same, no offset.
+        //Their value impacts the scroll speed. Higher value = faster scroll...value of 1 = almost no scroll.
+
+    } tagOuter="figure" >
+                
         <form className="friendslist-form" onSubmit={submitHandler}>
             Full Name:
             <input type="text" name="name"  onChange={handleChange}></input>
@@ -65,6 +74,9 @@ const FriendsList = () => {
             <input type="email" name="email"  onChange={handleChange}></input>
             <button type="submit">Add Friend</button>
         </form>
+        </Parallax>
+    
+
 
         {/* LOADING SPINNER */}
         { (pending) ?  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : null }
